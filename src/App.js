@@ -4,7 +4,11 @@ import "firebase/auth";
 import firebaseConfig from "./firebase.config";
 import { useState } from "react";
 
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app();
+}
 
 function App() {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
